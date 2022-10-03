@@ -2,15 +2,21 @@
 //  ContentView.swift
 //  Quiz
 //
-//  Created by Andrey on 07.09.2022.
-//
 
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage(.isSignedInKey) var isSignedIn = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        if !isSignedIn {
+            NavigationView {
+                LoginView()
+                    .navigationBarHidden(true)
+            }
+        } else {
+            SignedInUserView()
+        }
     }
 }
 
