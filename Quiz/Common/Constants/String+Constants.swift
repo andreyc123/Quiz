@@ -9,6 +9,7 @@ import Foundation
 
 extension String {
     static let isSignedInKey        = "isSignedIn"
+    static let lastUserEmailKey     = "lastUserEmail"
     static let usersKey             = "users"
     static let testsKey             = "tests"
     static let testsQuestionsKey    = "tests-questions"

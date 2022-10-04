@@ -23,6 +23,7 @@ final class LoginViewModel: ObservableObject {
     let apiClient: ApiClient
     
     @AppStorage(.isSignedInKey) var isSignedIn = false
+    @AppStorage(.lastUserEmailKey) var lastUserEmail = ""
     
     @Published var email = ""
     @Published var password = ""
@@ -34,6 +35,7 @@ final class LoginViewModel: ObservableObject {
     
     init(apiClient: ApiClient) {
         self.apiClient = apiClient
+        email = lastUserEmail
     }
     
     func logIn() {
@@ -57,6 +59,7 @@ final class LoginViewModel: ObservableObject {
                 break
             }
         } receiveValue: { [weak self] _ in
+            self?.lastUserEmail = self?.email ?? ""
             self?.isSignedIn = true
         }
         .store(in: &subscriptions)
