@@ -38,12 +38,10 @@ struct ProfileView: View {
                 VStack(spacing: 20) {
                     ButtonView(title: "Update",
                                isDisabled: !isUpdateButtonEnabled,
-                               isProgressIndicator: false,
+                               isProgressIndicator: viewModel.isUpdateProgressIndicator,
                                action: update)
                     
                     ButtonView(title: "Logout",
-                               isDisabled: false,
-                               isProgressIndicator: false,
                                action: viewModel.signOut)
                 }
             }
